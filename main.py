@@ -26,6 +26,7 @@ async def on_ready():
 
 async def load_extensions():
     await bot.load_extension('cogs.blacklist')
+    await bot.load_extension('cogs.say')
 
 if __name__ == '__main__':
     import asyncio

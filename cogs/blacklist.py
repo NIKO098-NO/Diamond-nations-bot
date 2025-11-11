@@ -72,5 +72,17 @@ class Blacklist(commands.Cog):
         response = f"User {user_id} has been blacklisted. Banned from {banned_count} server(s)."
         await interaction.response.send_message(response, ephemeral=True)
 
+    @app_commands.command(name="checkbl", description="Check if a user ID is blacklisted")
+    @app_commands.describe(user_id="The Discord user ID to check")
+    async def checkbl(self, interaction: discord.Interaction, user_id: str):
+        blacklist = load_blacklist()
+        if user_id in blacklist:
+            entry = blacklist[user_id]
+            moderator = entry.get('moderator', 'Anonymous') if not entry.get('anonymous', False) else 'Anonymous'
+            response = f"User {user_id} is blacklisted.\nReason: {entry['reason']}\nModerator: {moderator}\nDate: {entry['date']}"
+        else:
+            response = f"User {user_id} is not blacklisted."
+        await interaction.response.send_message(response, ephemeral=True)
+
 async def setup(bot):
     await bot.add_cog(Blacklist(bot))
