@@ -3,8 +3,8 @@ from discord.ext import commands
 import logging
 import os
 from dotenv import load_dotenv
-from flask import Flask
 import threading
+from webserver import run_flask
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
@@ -15,17 +15,6 @@ intents.message_content = True
 intents.members = True
 
 bot = commands.Bot(command_prefix='!', intents=intents)
-
-# Flask app for health checks
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return 'Bot is running!'
-
-def run_flask():
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port)
 
 @bot.event
 async def on_ready():

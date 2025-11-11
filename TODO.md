@@ -1,5 +1,2 @@
-- [x] Update requirements.txt to add Flask
-- [x] Modify main.py to integrate Flask for web server
-- [x] Test changes locally
-- [x] Commit and push changes to GitHub
-- [ ] Redeploy on Render.com
+- [x] Create webserver.py with Flask app, route, and run_flask function
+- [x] Edit main.py to remove Flask code and import run_flask from webserver.py
