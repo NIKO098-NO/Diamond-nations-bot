@@ -1,0 +1,33 @@
+import discord
+from discord.ext import commands
+import logging
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+
+handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True
+
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user.name} - {bot.user.id}')
+    await bot.change_presence(status=discord.Status.dnd)
+    try:
+        synced = await bot.tree.sync()
+        print(f"Synced {len(synced)} global command(s)")
+    except Exception as e:
+        print(f"Error syncing commands: {e}")
+
+async def load_extensions():
+    await bot.load_extension('cogs.blacklist')
+
+if __name__ == '__main__':
+    import asyncio
+    asyncio.run(load_extensions())
+    bot.run(TOKEN, log_handler=handler, log_level=logging.DEBUG)
