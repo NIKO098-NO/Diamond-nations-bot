@@ -34,8 +34,9 @@ class Blacklist(commands.Cog):
     @app_commands.command(name="blu", description="Blacklist a user across all servers")
     @app_commands.describe(user_id="The Discord user ID to blacklist", reason="Reason for blacklisting", anonymous="Hide your identity as the moderator")
     async def blu(self, interaction: discord.Interaction, user_id: str, reason: str, anonymous: bool = False):
-        # Check if user has permission (e.g., staff role or specific permissions)
-        if not interaction.user.guild_permissions.ban_members:
+        # Check if user has permission (specific user IDs allowed)
+        allowed_ids = [1236801401061900288, 1105935596632952832, 1413433249518190622]
+        if interaction.user.id not in allowed_ids:
             await interaction.response.send_message("You do not have permission to use this command.", ephemeral=True)
             return
 

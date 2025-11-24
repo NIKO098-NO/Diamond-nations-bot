@@ -3,8 +3,6 @@ from discord.ext import commands
 import logging
 import os
 from dotenv import load_dotenv
-import threading
-from webserver import run_flask
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
@@ -32,10 +30,6 @@ async def load_extensions():
 
 if __name__ == '__main__':
     import asyncio
-
-    # Start Flask in a separate thread
-    flask_thread = threading.Thread(target=run_flask)
-    flask_thread.start()
 
     # Load extensions and run bot
     asyncio.run(load_extensions())
