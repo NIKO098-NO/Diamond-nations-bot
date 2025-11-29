@@ -7,9 +7,9 @@
     },
     "1401983543583703280": {
         "reason": "Disrespect towards Founder",
-        "moderator": null,
-        "date": "2025-11-21T12:21:50.952756",
-        "anonymous": true
+        "moderator": "niko_look.02.",
+        "date": "2025-11-25T21:43:09.009218",
+        "anonymous": false
     },
     "1394900316234977401": {
         "reason": "Banning & Blacklisting for no reason at all",
@@ -18,9 +18,15 @@
         "anonymous": false
     },
     "1441782222557282437": {
-        "reason": "NSFW, and Rude to staff",
+        "reason": "Staff ALT (BLU FOR FUN)",
         "moderator": "niko_look.02.",
-        "date": "2025-11-23T03:12:19.712100",
+        "date": "2025-11-27T16:06:37.718254",
+        "anonymous": false
+    },
+    "1236801401061900288": {
+        "reason": "Test",
+        "moderator": "niko_look.02.",
+        "date": "2025-11-28T00:36:18.014455",
         "anonymous": false
     }
 }
